@@ -6,5 +6,5 @@ import com.presente.caixa.Entity.UserEntity;
 
 public interface UserRepository extends JpaRepository <UserEntity,Long>{
 
-    
+
 }
