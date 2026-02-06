@@ -19,10 +19,10 @@ public class ItemEntity {
     private String nomeItem;
 
     //VALOR
-    private double valorItem;
+    private Double valorItem;
 
     //VALOR EM CAIXA
-    private double valorDisponivel;
+    private Double valorDisponivel;
 
     @ManyToOne
     @JoinColumn(name = "id_user")
@@ -31,7 +31,7 @@ public class ItemEntity {
     public ItemEntity() {
     }
 
-    public ItemEntity(Long id_item, String nomeItem, double valorItem, double valorDisponivel, UserEntity userEntity) {
+    public ItemEntity(Long id_item, String nomeItem, Double valorItem, Double valorDisponivel, UserEntity userEntity) {
         this.id_item = id_item;
         this.nomeItem = nomeItem;
         this.valorItem = valorItem;
@@ -55,19 +55,19 @@ public class ItemEntity {
         this.nomeItem = nomeItem;
     }
 
-    public double getValorItem() {
+    public Double getValorItem() {
         return valorItem;
     }
 
-    public void setValorItem(double valorItem) {
+    public void setValorItem(Double valorItem) {
         this.valorItem = valorItem;
     }
 
-    public double getValorDisponivel() {
+    public Double getValorDisponivel() {
         return valorDisponivel;
     }
 
-    public void setValorDisponivel(double valorDisponivel) {
+    public void setValorDisponivel(Double valorDisponivel) {
         this.valorDisponivel = valorDisponivel;
     }
 

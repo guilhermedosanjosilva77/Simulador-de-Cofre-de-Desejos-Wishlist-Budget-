@@ -29,12 +29,12 @@ public class UserEntity {
     private String email;
 
     //SENHA
-    private int senha;
+    private String senha;
 
     public UserEntity() {
     }
 
-    public UserEntity(Long id_user, String nome, String email, int senha) {
+    public UserEntity(Long id_user, String nome, String email, String senha) {
         this.id_user = id_user;
         this.nome = nome;
         this.email = email;
@@ -65,11 +65,11 @@ public class UserEntity {
         this.email = email;
     }
 
-    public int getSenha() {
+    public String getSenha() {
         return senha;
     }
 
-    public void setSenha(int senha) {
+    public void setSenha(String senha) {
         this.senha = senha;
     }
 

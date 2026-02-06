@@ -5,22 +5,33 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.presente.caixa.Entity.ItemEntity;
+import com.presente.caixa.Entity.UserEntity;
 import com.presente.caixa.Repository.ItemRepository;
+import com.presente.caixa.Repository.UserRepository;
 
 @Service
 public class ItemService {
     private final ItemRepository itemRepository;
+    private final UserRepository userRepository;
 
     
 
-    public ItemService(ItemRepository itemRepository) {
-        this.itemRepository = itemRepository;
-    }
-
+    
 
     
     //CREATE
+    public ItemService(ItemRepository itemRepository, UserRepository userRepository) {
+        this.itemRepository = itemRepository;
+        this.userRepository = userRepository;
+    }
+
     public ItemEntity criar(ItemEntity itemEntity){
+        //Código para prevenir que tente ser salvo um item que o user nao exista
+        Long idDoUsuario=itemEntity.getUserEntity().getId_user();
+        UserEntity usuarioExistente = userRepository.findById(idDoUsuario).orElseThrow(()->new RuntimeException("Erro usuário não existe"));
+       
+        itemEntity.setUserEntity(usuarioExistente);
+
         return itemRepository.save(itemEntity);
     }
 
