@@ -1,0 +1,21 @@
+
+CREATE DATABASE presentes_db
+
+CREATE TABLE user (
+    id_user BIGINT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL,
+    senha INT NOT NULL
+);
+
+
+CREATE TABLE item (
+    id_item BIGINT AUTO_INCREMENT PRIMARY KEY,
+    nome_item VARCHAR(255),
+    valor_item DOUBLE NOT NULL,
+    valor_disponivel DOUBLE NOT NULL,
+    id_user BIGINT,
+    
+    -- Caso queira garantir a integridade referencial:
+    CONSTRAINT fk_user_item FOREIGN KEY (id_user) REFERENCES usuario(id_user)
+);
