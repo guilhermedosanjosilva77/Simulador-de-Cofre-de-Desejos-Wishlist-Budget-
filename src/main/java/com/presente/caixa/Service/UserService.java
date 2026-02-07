@@ -22,7 +22,7 @@ public class UserService {
     //CREATE
     public UserResponse criar(UserRequest dados,UserEntity userEntity){
         //não permitir a criação de mais de um email
-        boolean jaExiste = userRepository.existeEmail(userEntity.getEmail());
+        boolean jaExiste = userRepository.existeEmail(dados.email());
         if(jaExiste == true){
             throw new RuntimeException("Endereço de email já existe");
         }

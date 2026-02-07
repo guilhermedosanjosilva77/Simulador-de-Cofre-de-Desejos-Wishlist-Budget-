@@ -2,6 +2,7 @@ package com.presente.caixa.DTO;
 
 import com.presente.caixa.Entity.ItemEntity;
 
+//SEGURANÇA PARA SAIDA
 public record ItemResponse(Long id_item, Double valorItem, Double valorDisponivel,Long idUser) {
 
     public ItemResponse(ItemEntity itemEntity) {

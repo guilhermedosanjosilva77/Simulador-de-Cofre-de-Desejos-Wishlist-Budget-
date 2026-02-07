@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import com.presente.caixa.DTO.ItemRequest;
+import com.presente.caixa.DTO.ItemResponse;
 import com.presente.caixa.Entity.ItemEntity;
 import com.presente.caixa.Entity.UserEntity;
 import com.presente.caixa.Repository.ItemRepository;
@@ -25,41 +27,59 @@ public class ItemService {
         this.userRepository = userRepository;
     }
 
-    public ItemEntity criar(ItemEntity itemEntity){
+    public ItemResponse criar(ItemRequest dados){
         //Código para prevenir que tente ser salvo um item que o user nao exista
-        Long idDoUsuario=itemEntity.getUserEntity().getId_user();
-        UserEntity usuarioExistente = userRepository.findById(idDoUsuario).orElseThrow(()->new RuntimeException("Erro usuário não existe"));
-       
-        itemEntity.setUserEntity(usuarioExistente);
+       UserEntity dono = userRepository.findById(dados.idUsuario()).orElseThrow(()-> new RuntimeException("Usuario não existe"));
 
-        return itemRepository.save(itemEntity);
+       ItemEntity itemEntity = new ItemEntity();
+       itemEntity.setNomeItem(dados.nomeItem());
+       itemEntity.setValorDisponivel(dados.valorDisponivel());
+       itemEntity.setValorItem(dados.valorItem());
+       itemEntity.setUserEntity(dono);
+
+
+
+
+        itemRepository.save(itemEntity);
+        return new ItemResponse(itemEntity);
     }
 
     //READ
-    public List<ItemEntity> buscar(){
-        return itemRepository.findAll();
+    public List<ItemResponse> buscar(){
+        return itemRepository.findAll().stream().map(ItemResponse::new).toList();
     }
 
     //READ BY ID
-    public ItemEntity buscarPorId(Long id_item){
-        return itemRepository.findById(id_item).orElse(null);
+    public ItemResponse buscarPorId(Long id_item){
+        ItemEntity itemEntity = itemRepository.findById(id_item).orElse(null);
+
+        if (itemEntity != null) {
+            return new ItemResponse(itemEntity);
+            
+        }
+        else{
+            return null;
+        }
+
+
 
     }
 
     //UPDATE
-    public ItemEntity atualizar(Long id_item, ItemEntity atualizar){
-        ItemEntity itemEntity = buscarPorId(id_item);
+    public ItemResponse atualizar(Long id_item, ItemRequest atualizar){
+        ItemEntity itemEntity = itemRepository.findById(id_item).orElse(null);
 
         if (itemEntity == null) {
 
             return null;
             
         }
-        itemEntity.setNomeItem(atualizar.getNomeItem());
-        itemEntity.setValorDisponivel(atualizar.getValorDisponivel());
-        itemEntity.setValorItem(atualizar.getValorItem());
+        itemEntity.setNomeItem(atualizar.nomeItem());
+        itemEntity.setValorDisponivel(atualizar.valorDisponivel());
+        itemEntity.setValorItem(atualizar.valorItem());
 
-        return itemRepository.save(itemEntity);
+         itemRepository.save(itemEntity);
+         return new ItemResponse(itemEntity);
     }
 
     //DELETE
