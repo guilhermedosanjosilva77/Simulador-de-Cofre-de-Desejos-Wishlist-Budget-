@@ -2,6 +2,7 @@ package com.presente.caixa.Service;
 
 import java.util.List;
 
+
 import org.springframework.stereotype.Service;
 
 import com.presente.caixa.Entity.UserEntity;
@@ -18,6 +19,11 @@ public class UserService {
 
     //CREATE
     public UserEntity criar(UserEntity userEntity){
+        //não permitir a criação de mais de um email
+        boolean jaExiste = userRepository.existeEmail(userEntity.getEmail());
+        if(jaExiste == true){
+            throw new RuntimeException("Endereço de email já existe");
+        }
         return userRepository.save(userEntity);
     }
 
