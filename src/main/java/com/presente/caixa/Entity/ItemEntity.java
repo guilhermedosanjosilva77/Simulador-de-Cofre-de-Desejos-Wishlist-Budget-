@@ -25,7 +25,7 @@ public class ItemEntity {
     private Double valorDisponivel;
 
     @ManyToOne
-    @JoinColumn(name = "id_user")
+    @JoinColumn(name = "id")
     private UserEntity userEntity;
 
     public ItemEntity() {

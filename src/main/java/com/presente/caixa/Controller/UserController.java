@@ -5,7 +5,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.presente.caixa.DTO.UserRequest;
 import com.presente.caixa.DTO.UserResponse;
-import com.presente.caixa.Entity.UserEntity;
 import com.presente.caixa.Service.UserService;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -48,21 +47,21 @@ public class UserController {
     //READ BY ID - GET
 
     @GetMapping("/{id_user}")
-    public UserResponse buscarPorId(@PathVariable Long id_user) {
-        return userService.buscarPorId(id_user);
+    public UserResponse buscarPorId(@PathVariable Long id) {
+        return userService.buscarPorId(id);
     }
 
     //UPDATE - PUT
     @PutMapping("/{id_user}")
-    public UserResponse atualizar(@PathVariable Long id_user, @RequestBody UserRequest userRequest) {
+    public UserResponse atualizar(@PathVariable Long id, @RequestBody UserRequest userRequest) {
         
-        return userService.atualizar(id_user, userRequest);
+        return userService.atualizar(id, userRequest);
     }
 
     //DELETE - DELETE
     @DeleteMapping("/{id_user}")
-    public void deletar(@PathVariable Long id_user){
-        userService.deletar(id_user);
+    public void deletar(@PathVariable Long id){
+        userService.deletar(id);
     }
     
     

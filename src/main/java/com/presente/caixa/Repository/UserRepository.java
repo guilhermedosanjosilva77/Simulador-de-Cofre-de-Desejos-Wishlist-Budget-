@@ -5,5 +5,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import com.presente.caixa.Entity.UserEntity;
 
 public interface UserRepository extends JpaRepository <UserEntity,Long>{
-    boolean existeEmail(String email);
+
+    boolean existsByEmail(String email);
 }

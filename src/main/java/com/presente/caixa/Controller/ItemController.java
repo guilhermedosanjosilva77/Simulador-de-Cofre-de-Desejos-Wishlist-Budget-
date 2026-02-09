@@ -5,7 +5,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.presente.caixa.DTO.ItemRequest;
 import com.presente.caixa.DTO.ItemResponse;
-import com.presente.caixa.Entity.ItemEntity;
 import com.presente.caixa.Service.ItemService;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;

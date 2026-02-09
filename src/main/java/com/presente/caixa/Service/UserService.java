@@ -22,7 +22,7 @@ public class UserService {
     //CREATE
     public UserResponse criar(UserRequest dados,UserEntity userEntity){
         //não permitir a criação de mais de um email
-        boolean jaExiste = userRepository.existeEmail(dados.email());
+        boolean jaExiste = userRepository.existsByEmail(dados.email());
         if(jaExiste == true){
             throw new RuntimeException("Endereço de email já existe");
         }
@@ -42,8 +42,8 @@ public class UserService {
     }
 
     //READ BY ID
-    public UserResponse buscarPorId(Long id_user){
-        UserEntity usuario =userRepository.findById(id_user).orElse(null);
+    public UserResponse buscarPorId(Long id){
+        UserEntity usuario =userRepository.findById(id).orElse(null);
         if (usuario != null) {
             return new UserResponse(usuario);
             
@@ -54,8 +54,8 @@ public class UserService {
     }
 
     //UPDATE
-    public UserResponse atualizar(Long id_user, UserRequest atualizar){
-        UserEntity userEntity = userRepository.findById(id_user).orElse(null);
+    public UserResponse atualizar(Long id, UserRequest atualizar){
+        UserEntity userEntity = userRepository.findById(id).orElse(null);
 
         if (userEntity == null) {
             return null;
@@ -72,8 +72,8 @@ public class UserService {
 
 
     //DELETE
-    public void deletar(Long id_user){
-        userRepository.deleteById(id_user);
+    public void deletar(Long id){
+        userRepository.deleteById(id);
     }
     //TUDO QUE RECEBE UM OBJETO DE ENTITY PRECISA PASSAR PELO DTO
 }

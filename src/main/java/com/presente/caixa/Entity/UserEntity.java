@@ -16,7 +16,7 @@ public class UserEntity {
     //ID
     @Id
     @GeneratedValue (strategy = GenerationType.IDENTITY)
-    private Long id_user;
+    private Long id;
 
     //RELACIONAMENTO TABELA ITEM
     @OneToMany (mappedBy = "userEntity")
@@ -34,19 +34,19 @@ public class UserEntity {
     public UserEntity() {
     }
 
-    public UserEntity(Long id_user, String nome, String email, String senha) {
-        this.id_user = id_user;
+    public UserEntity(Long id, String nome, String email, String senha) {
+        this.id = id;
         this.nome = nome;
         this.email = email;
         this.senha = senha;
     }
 
-    public Long getId_user() {
-        return id_user;
+    public Long getId() {
+        return id;
     }
 
-    public void setId_user(Long id_user) {
-        this.id_user = id_user;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getNome() {

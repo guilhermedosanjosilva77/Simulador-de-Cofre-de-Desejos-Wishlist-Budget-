@@ -10,7 +10,7 @@ public record ItemResponse(Long id_item, Double valorItem, Double valorDisponive
              itemEntity.getId_item(),
             itemEntity.getValorItem(),
             itemEntity.getValorDisponivel(),
-            itemEntity.getUserEntity().getId_user() 
+            itemEntity.getUserEntity().getId() 
         );
     }
     
