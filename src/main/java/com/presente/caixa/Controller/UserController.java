@@ -3,6 +3,8 @@ package com.presente.caixa.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.presente.caixa.DTO.UserRequest;
+import com.presente.caixa.DTO.UserResponse;
 import com.presente.caixa.Entity.UserEntity;
 import com.presente.caixa.Service.UserService;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -30,31 +32,31 @@ public class UserController {
 
     //CREATE - POST
     @PostMapping
-    public UserEntity criar(@RequestBody UserEntity userEntity) {
+    public UserResponse criar(@RequestBody UserRequest userRequest) {
         //TODO: process POST request
         
-        return userService.criar(userEntity);
+        return userService.criar(userRequest, null);
     }
 
     //READ- GET
 
     @GetMapping
-    public List<UserEntity>buscar() {
+    public List<UserResponse>buscar() {
         return userService.buscar();
     }
 
     //READ BY ID - GET
 
     @GetMapping("/{id_user}")
-    public UserEntity buscarPorId(@PathVariable Long id_user) {
+    public UserResponse buscarPorId(@PathVariable Long id_user) {
         return userService.buscarPorId(id_user);
     }
 
     //UPDATE - PUT
     @PutMapping("/{id_user}")
-    public UserEntity atualizar(@PathVariable Long id_user, @RequestBody UserEntity userEntity) {
+    public UserResponse atualizar(@PathVariable Long id_user, @RequestBody UserRequest userRequest) {
         
-        return userService.atualizar(id_user, userEntity);
+        return userService.atualizar(id_user, userRequest);
     }
 
     //DELETE - DELETE

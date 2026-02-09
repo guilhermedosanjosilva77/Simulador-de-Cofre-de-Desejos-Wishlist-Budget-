@@ -3,6 +3,8 @@ package com.presente.caixa.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.presente.caixa.DTO.ItemRequest;
+import com.presente.caixa.DTO.ItemResponse;
 import com.presente.caixa.Entity.ItemEntity;
 import com.presente.caixa.Service.ItemService;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -30,27 +32,27 @@ public class ItemController {
 
     //CREATE - POST
     @PostMapping
-    public ItemEntity criar(@RequestBody ItemEntity itemEntity) {
-        return itemService.criar(itemEntity);
+    public ItemResponse criar(@RequestBody ItemRequest itemRequest) {
+        return itemService.criar(itemRequest);
     }
 
     //READ - GET
     @GetMapping
-    public List<ItemEntity>buscar() {
+    public List<ItemResponse>buscar() {
         return itemService.buscar();
     }
 
     //READ BY ID - GET
     @GetMapping("/{id_item}")
-    public ItemEntity buscarPorId(@PathVariable Long id_item) {
+    public ItemResponse buscarPorId(@PathVariable Long id_item) {
         return itemService.buscarPorId(id_item);
     }
     
 
     //UPDATE - PUT
     @PutMapping("/{id_item}")
-    public ItemEntity atualizar(@PathVariable Long id_item, @RequestBody ItemEntity itemEntity) {
-        return itemService.atualizar(id_item, itemEntity);
+    public ItemResponse atualizar(@PathVariable Long id_item, @RequestBody ItemRequest itemRerRequest) {
+        return itemService.atualizar(id_item, itemRerRequest);
     }
 
     //DELETE - DELETE
