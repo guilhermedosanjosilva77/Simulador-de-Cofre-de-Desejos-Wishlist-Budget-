@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,7 +19,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 
 
 
-
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping("/user")
 public class UserController {
@@ -34,7 +35,7 @@ public class UserController {
     public UserResponse criar(@RequestBody UserRequest userRequest) {
         //TODO: process POST request
         
-        return userService.criar(userRequest, null);
+        return userService.criar(userRequest);
     }
 
     //READ- GET
@@ -46,20 +47,20 @@ public class UserController {
 
     //READ BY ID - GET
 
-    @GetMapping("/{id_user}")
+    @GetMapping("/{id}")
     public UserResponse buscarPorId(@PathVariable Long id) {
         return userService.buscarPorId(id);
     }
 
     //UPDATE - PUT
-    @PutMapping("/{id_user}")
+    @PutMapping("/{id}")
     public UserResponse atualizar(@PathVariable Long id, @RequestBody UserRequest userRequest) {
         
         return userService.atualizar(id, userRequest);
     }
 
     //DELETE - DELETE
-    @DeleteMapping("/{id_user}")
+    @DeleteMapping("/{id}")
     public void deletar(@PathVariable Long id){
         userService.deletar(id);
     }

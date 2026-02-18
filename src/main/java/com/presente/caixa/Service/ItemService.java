@@ -87,6 +87,18 @@ public class ItemService {
         itemRepository.deleteById(id_item);
     }
 
+    public ItemResponse adicionarValor(Long id_item, Double valor) {
+    ItemEntity item = itemRepository.findById(id_item)
+        .orElseThrow(() -> new RuntimeException("Item não encontrado"));
+
+    // Soma o valor atual com o valor recebido
+    Double novoTotal = item.getValorDisponivel() + valor;
+    item.setValorDisponivel(novoTotal);
+
+    itemRepository.save(item);
+    return new ItemResponse(item);
+}
+
 
 
 

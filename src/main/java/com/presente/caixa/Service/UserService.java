@@ -20,12 +20,13 @@ public class UserService {
     }
 
     //CREATE
-    public UserResponse criar(UserRequest dados,UserEntity userEntity){
+    public UserResponse criar(UserRequest dados){
         //não permitir a criação de mais de um email
         boolean jaExiste = userRepository.existsByEmail(dados.email());
         if(jaExiste == true){
             throw new RuntimeException("Endereço de email já existe");
         }
+        UserEntity userEntity = new UserEntity();
 
         //DTO REQUEST, IRÁ REECEBER DO USUÁRIO
         userEntity.setNome(dados.nome());

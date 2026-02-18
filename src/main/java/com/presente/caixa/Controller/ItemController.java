@@ -1,6 +1,8 @@
 package com.presente.caixa.Controller;
 
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.presente.caixa.DTO.ItemRequest;
@@ -11,14 +13,16 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
 
 
-
+@CrossOrigin(origins = "http://localhost:3000", allowedHeaders = "*", methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE, RequestMethod.PATCH, RequestMethod.OPTIONS})
 @RestController
 @RequestMapping("/item")
 public class ItemController {
@@ -59,6 +63,11 @@ public class ItemController {
     public void deletar(@PathVariable Long id_item){
         itemService.deletar(id_item);
     }
+
+    @PatchMapping("/{id_item}/adicionar")
+public ItemResponse adicionarValor(@PathVariable Long id_item, @RequestParam Double valor) {
+    return itemService.adicionarValor(id_item, valor);
+}
     
     
     
