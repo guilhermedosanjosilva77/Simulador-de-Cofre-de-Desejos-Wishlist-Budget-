@@ -1,6 +1,8 @@
 ![Java](https://img.shields.io/badge/java-%23ED8B00.svg?style=for-the-badge&logo=openjdk&logoColor=white)
 ![Spring](https://img.shields.io/badge/spring-%236DB33F.svg?style=for-the-badge&logo=spring&logoColor=white)
 ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
+
+
 🪙 Wishlist Budget - Simulador de Cofre de Desejos
 Este é um projeto Full Stack desenvolvido para consolidar meus estudos em Spring Boot e React. A aplicação permite que o usuário gerencie metas financeiras ("desejos"), acompanhando quanto já economizou e quanto falta para realizar cada objetivo.
 
