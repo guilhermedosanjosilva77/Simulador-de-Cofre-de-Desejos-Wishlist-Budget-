@@ -1,0 +1,378 @@
+/* =========================================================
+   RESET GLOBAL
+   Remove espaçamentos padrão do navegador
+   ========================================================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+/* =========================================================
+   TOKENS DE DESIGN (variáveis globais)
+   Centralizam cores, sombras e bordas do projeto.
+   Facilita manutenção e consistência visual.
+   ========================================================= */
+:root {
+  --bg-main: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+
+  --card-bg: rgba(255, 255, 255, 0.82);
+  --card-border: rgba(255, 255, 255, 0.35);
+
+  --text-main: #0a1a1a;
+  --text-muted: rgba(10, 26, 26, 0.65);
+
+  --purple: #5f2cff;
+  --mint: #00f5a0;
+
+  --gradient-main: linear-gradient(135deg, #5f2cff, #00f5a0);
+  --gradient-danger: linear-gradient(135deg, #ff4b4b, #ff7676);
+
+  --radius: 18px;
+  --radius-lg: 22px;
+
+  --shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.18);
+  --shadow-strong: 0 20px 45px rgba(0, 0, 0, 0.28);
+}
+
+
+/* =========================================================
+   BASE DA APLICAÇÃO
+   ========================================================= */
+body {
+  font-family: "Segoe UI", Arial, sans-serif;
+  background: var(--bg-main);
+  min-height: 100vh;
+  color: var(--text-main);
+}
+
+
+/* =========================================================
+   INPUTS E SELECTS
+   Campo padrão reutilizável
+   ========================================================= */
+input,
+select {
+  width: 100%;
+  padding: 11px 12px;
+  border-radius: 12px;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  background: rgba(255, 255, 255, 0.95);
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+input:focus,
+select:focus {
+  border-color: rgba(95, 44, 255, 0.5);
+  box-shadow: 0 0 0 4px rgba(95, 44, 255, 0.15);
+}
+
+
+/* =========================================================
+   HEADER PRINCIPAL
+   ========================================================= */
+.header {
+  margin: 24px;
+  padding: 28px;
+  border-radius: var(--radius-lg);
+  background: var(--gradient-main);
+  color: #fff;
+  box-shadow: var(--shadow-strong);
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+}
+
+.header h1 {
+  font-size: 26px;
+  font-weight: 700;
+}
+
+.header .sub {
+  font-size: 14px;
+  opacity: 0.9;
+  margin-top: 6px;
+}
+
+
+/* =========================================================
+   LAYOUT PRINCIPAL
+   Sidebar + Conteúdo
+   ========================================================= */
+.layout {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: 22px;
+  padding: 0 24px 24px;
+}
+
+/* Responsividade */
+@media (max-width: 900px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* =========================================================
+   CARD BASE
+   Estrutura reutilizável
+   ========================================================= */
+.card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius);
+  padding: 20px;
+  box-shadow: var(--shadow-soft);
+  backdrop-filter: blur(14px);
+}
+
+
+/* =========================================================
+   SIDEBAR
+   ========================================================= */
+.sidebar label {
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  color: rgba(8, 20, 20, 0.8);
+  margin-bottom: 8px;
+  display: block;
+}
+
+.sidebar .row {
+  margin-top: 12px;
+}
+
+.sidebar .hint {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-top: 14px;
+  line-height: 1.4;
+}
+
+
+/* =========================================================
+   CONTEÚDO PRINCIPAL
+   ========================================================= */
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+
+/* =========================================================
+   RESUMO GERAL
+   ========================================================= */
+.summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+}
+
+.summary h2 {
+  font-size: 18px;
+}
+
+.summary .sub {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-top: 4px;
+}
+
+
+/* =========================================================
+   GRID DE ITENS
+   ========================================================= */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 18px;
+}
+
+
+/* =========================================================
+   CARD DE ITEM
+   ========================================================= */
+.item {
+  display: flex;
+  flex-direction: column;
+}
+
+.itemTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.itemTop h4 {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.meta {
+  font-size: 14px;
+  color: var(--text-muted);
+  margin: 10px 0 6px;
+}
+
+
+/* =========================================================
+   BARRA DE PROGRESSO
+   ========================================================= */
+.bar {
+  height: 10px;
+  background: rgba(0, 0, 0, 0.12);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.bar div {
+  height: 100%;
+  background: linear-gradient(90deg, var(--purple), var(--mint));
+  border-radius: 999px;
+  transition: width 0.4s ease;
+}
+
+
+/* =========================================================
+   STATUS (PILL)
+   ========================================================= */
+.pill {
+  font-size: 12px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.08);
+  font-weight: 600;
+}
+
+.pill.ok {
+  background: rgba(0, 200, 140, 0.22);
+  color: #055c3a;
+}
+
+
+/* =========================================================
+   BOTÕES
+   ========================================================= */
+.btn {
+  border: none;
+  border-radius: 12px;
+  padding: 10px 16px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.08s ease, opacity 0.08s ease;
+}
+
+.btn:active {
+  transform: translateY(1px);
+}
+
+.btn.primary {
+  background: var(--gradient-main);
+  color: #fff;
+}
+
+.btn.danger {
+  background: var(--gradient-danger);
+  color: #fff;
+}
+
+.btn.ghost {
+  background: rgba(255, 255, 255, 0.6);
+  border: 1px solid rgba(0, 0, 0, 0.15);
+}
+
+.btn.small {
+  padding: 8px 12px;
+  font-size: 12px;
+}
+
+.row {
+  display: flex;
+  gap: 10px;
+  margin-top: 14px;
+  flex-wrap: wrap;
+}
+
+
+/* =========================================================
+   ESTADO VAZIO
+   ========================================================= */
+.empty {
+  text-align: center;
+  padding: 44px 24px;
+}
+
+.empty h3 {
+  font-size: 18px;
+  margin-bottom: 6px;
+}
+
+.empty p {
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+
+/* =========================================================
+   MODAL
+   ========================================================= */
+.modalOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 50;
+}
+
+.modal {
+  width: min(520px, 100%);
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: var(--radius-lg);
+  padding: 22px;
+  box-shadow: var(--shadow-strong);
+}
+
+.modalForm,
+.modalBody {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+
+/* =========================================================
+   TOAST (feedback rápido)
+   ========================================================= */
+.toast {
+  position: fixed;
+  right: 18px;
+  bottom: 18px;
+  max-width: 320px;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: var(--shadow-soft);
+  padding: 14px 16px;
+  font-size: 13px;
+  border-left: 5px solid transparent;
+}
+
+.toast strong {
+  display: block;
+  margin-bottom: 4px;
+}
+
+.toast.error { border-color: #ff4b4b; }
+.toast.success { border-color: #00c896; }
+.toast.info { border-color: #5f2cff; }
