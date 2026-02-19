@@ -13,6 +13,7 @@ Backend: CRUD completo, persistência de dados e lógica de negócio.
 
 Frontend: Consumo de APIs, gerenciamento de estado e componentes reutilizáveis.
 
+
 🛠️ Tecnologias Utilizadas
 Backend (API)
 Java 17 & Spring Boot 3
@@ -32,6 +33,7 @@ CSS Modules / Styled Components: (Ajuste conforme sua escolha de estilização).
 
 Vite / Create React App: Ferramenta de build.
 
+
 📋 Funcionalidades
 [x] Painel de Controle: Visualização geral dos desejos e economias.
 
@@ -40,6 +42,7 @@ Vite / Create React App: Ferramenta de build.
 [x] Simulador de Depósito: Adicionar valores ao "cofre" de um item específico.
 
 [x] Cálculo Automático: A interface mostra a porcentagem (%) concluída de cada meta.
+
 
 ⚙️ Como Executar o Projeto
 1. Backend (Spring Boot)
@@ -59,6 +62,7 @@ npm install
 npm start
 A interface rodará em: http://localhost:5173 (se usar Vite) ou 3000.
 
+
 📁 Estrutura de Pastas Simplificada
 Plaintext
 ├── backend/            # Código fonte Spring Boot
@@ -69,6 +73,7 @@ Plaintext
 │   ├── src/services    # Configuração do Axios para chamadas à API
 │   └── package.json    # Dependências Node
 └── README.md
+
 
 
 💡 Aprendizados:
