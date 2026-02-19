@@ -69,6 +69,8 @@ Plaintext
 │   ├── src/services    # Configuração do Axios para chamadas à API
 │   └── package.json    # Dependências Node
 └── README.md
+
+
 💡 Aprendizados:
 Este simulador foi fundamental para evoluir minhas habilidades com o ecossistema Spring. Foquei em melhorar a estrutura das requisições e a segurança na transição de informações. Aprendi a lidar com o tratamento de erros no Spring, garantindo que o backend seja confiável, e conectei tudo a um frontend em React focado em performance e feedback em tempo real para o usuário.
 
